@@ -1,0 +1,10 @@
+{
+  "parts": [
+    {
+      "name": "ether-o-meter",
+	    "hooks": {
+		    "expressCreateServer" : "ep_ether-o-meter/index:expressServer"
+	    }
+    }
+  ]
+}

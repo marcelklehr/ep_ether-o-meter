@@ -1,0 +1,7 @@
+{
+  "name": "ep_ether-o-meter",
+  "version": "0.0.1",
+  "description": "Display metrics. On /metrics. For etherpad. With swag.",
+  "author": "Marcel Klehr <mklehr@gmx.net>",
+  "repository": "https://github.com/marcelklehr/ep_ether-o-meter.git"
+}
