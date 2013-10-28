@@ -18,5 +18,5 @@ or using etherpad's plugin manager at `/admin/plugins`, search for 'ether-o-mete
 If, for some reason, you think ether-o-meter doesn't handle a specific value very well or (beware!) it's broken, just file an issue on this repository.
 
 ## License
-(c) 2013 by Marcel Klehr
+(c) 2013 by Marcel Klehr  
 MIT License
