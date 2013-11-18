@@ -72,7 +72,7 @@ function getStats() {
       Object.keys(stats).forEach(function(gauge) {
         var jg, mean, gaugeId
 
-        if(Number.isInteger(stats[gauge])) {
+        if(stats[gauge] % 1 == 0) {
           // gauge already exists
           if(gauges[gauge]) return gauges[gauge](stats[gauge])
           
