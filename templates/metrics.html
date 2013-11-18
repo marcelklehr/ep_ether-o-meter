@@ -10,11 +10,34 @@ var settings = require('ep_etherpad-lite/node/utils/Settings')
   font-family: sans-serif;
   color: #999;
 }
+h1 {
+  margin: 0;
+  position: absolute;
+  left:0; right:0; top: 0;
+  
+  padding: 0.08cm;
+  background-color: #111;
+  font-size: 0.9cm;
+}
+#pushdown {
+  height:0;
+  margin-bottom: 2cm;
+}
 #gauges {
   margin: 0 auto;
+  overflow: visible;
+}
+#gauges > div {
+  height: 5cm;
   width: 10cm;
+  float: left;
+}
+#loading {
+  display: none;
+  text-align: center;
 }
 #footer {
+  clear: both;
   margin: 1cm auto;
   max-width: 10cm;
 }
@@ -22,6 +45,9 @@ var settings = require('ep_etherpad-lite/node/utils/Settings')
 </head>
 <body>
 <h1><%= settings.title %> metrics</h1>
+<div id="pushdown"></div>
+<div id="loading">Loading...</div>
+<noscript>You need javascript in order to see something.</noscript>
 <div id="gauges"></div>
 <div id="footer">Proudly presented by <a href="https://github.com/marcelklehr/ep_ether-o-meter">ether-o-meter</a> using <a href="http://justgage.com">justGage</a>.</div>
 </body>
@@ -54,20 +80,35 @@ var settings = require('ep_etherpad-lite/node/utils/Settings')
  * This software makes use of other software: raphael and justgage. see the
  * corresponding files to find their respective licenses.
  */
-
+</script>
+<script>
 function getStats() {
   x = new XMLHttpRequest;
   x.open('get', 'stats', false);
   x.send();
   return JSON.parse(x.response)
 }
+
+function showLoading() {
+  document.getElementById('loading').style.display = 'block';
+}
+function hideLoading() {
+  document.getElementById('loading').style.display = 'none';
+}
 </script>
 <script>
+  showLoading()
   window.onload = function(){
     
     var gauges = {}
+      , loaded = false
     setInterval(function() {
       var stats = getStats()
+      
+      if(!loaded) {
+        hideLoading()
+        loaded = true
+      }
       
       Object.keys(stats).forEach(function(gauge) {
         var jg, mean, gaugeId
