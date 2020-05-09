@@ -14,6 +14,9 @@ With npm: `npm install ep_ether-o-meter`
 
 or using etherpad's plugin manager at `/admin/plugins`, search for 'ether-o-meter' and click 'install'.
 
+## Usage
+Visit `/metrics` to see the metrics.
+
 ## Issues
 If, for some reason, you think ether-o-meter doesn't handle a specific value very well or (beware!) it's broken, just file an issue on this repository.
 
